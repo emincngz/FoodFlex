@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Ana Sayfa" />
+    <item
+        android:id="@+id/diaryFragment"
+        android:icon="@drawable/ic_diary"
+        android:title="Günlüğüm" />
+    <item
+        android:id="@+id/logMealFragment"
+        android:icon="@drawable/ic_camera"
+        android:title="Besin Girişi" />
+    <item
+        android:id="@+id/reportsFragment"
+        android:icon="@drawable/ic_reports"
+        android:title="Raporlar" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="Profil" />
+</menu>

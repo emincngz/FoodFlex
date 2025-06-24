@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <action
+        android:id="@+id/action_global_splashFragment"
+        app:destination="@id/splashFragment"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.foodflex.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.foodflex.LoginFragment"
+        android:label="Giriş Yap"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.foodflex.RegisterFragment"
+        android:label="Kayıt Ol"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_initialProfileSetupFragment"
+            app:destination="@id/initialProfileSetupFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/initialProfileSetupFragment"
+        android:name="com.example.foodflex.InitialProfileSetupFragment"
+        android:label="Profil Kurulumu"
+        tools:layout="@layout/fragment_initial_profile_setup" >
+        <action
+            android:id="@+id/action_initialProfileSetupFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.foodflex.HomeFragment"
+        android:label="Ana Sayfa"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_logMealFragment"
+            app:destination="@id/logMealFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_diaryFragment"
+            app:destination="@id/diaryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_reportsFragment"
+            app:destination="@id/reportsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/logMealFragment"
+        android:name="com.example.foodflex.LogMealFragment"
+        android:label="Besin Girişi"
+        tools:layout="@layout/fragment_log_meal" /> <fragment
+    android:id="@+id/diaryFragment"
+    android:name="com.example.foodflex.DiaryFragment"
+    android:label="Öğün Günlüğü"
+    tools:layout="@layout/fragment_diary" />
+    <fragment
+        android:id="@+id/reportsFragment"
+        android:name="com.example.foodflex.ReportsFragment"
+        android:label="Raporlar"
+        tools:layout="@layout/fragment_reports" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.foodflex.ProfileFragment"
+        android:label="Profil"
+        tools:layout="@layout/fragment_profile" />
+
+</navigation>

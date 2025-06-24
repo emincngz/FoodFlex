@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kalori Grafiği</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent; /* Arka planı şeffaf yap */
+        }
+        #myChart {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<canvas id="myChart"></canvas>
+<script>
+    let myChart; // Grafiği tutacak değişken
+
+    // Android tarafından çağrılacak fonksiyon
+    function drawChart(labels, data, goal) {
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+        // Eğer daha önce bir grafik çizildiyse, onu yok et
+        if (myChart) {
+            myChart.destroy();
+        }
+
+        // Grafik verilerini ve seçeneklerini ayarla
+        myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels, // Günler (Pzt, Sal, Çar...)
+                datasets: [{
+                    label: 'Alınan Kalori',
+                    data: data, // Kalori değerleri
+                    backgroundColor: 'rgba(85, 214, 243, 0.6)', // Açık mavi renk
+                    borderColor: 'rgba(85, 214, 243, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#BFC8CB' }, // Eksen yazı rengi
+                        grid: { color: 'rgba(191, 200, 203, 0.2)' } // Izgara çizgileri
+                    },
+                    x: {
+                        ticks: { color: '#BFC8CB' },
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false // "Alınan Kalori" yazısını gizle
+                    },
+                    // Grafiğin üzerine hedef kalori çizgisi ekleme
+                    annotation: {
+                        annotations: {
+                            line1: {
+                                type: 'line',
+                                yMin: goal,
+                                yMax: goal,
+                                borderColor: 'rgba(255, 99, 132, 0.8)',
+                                borderWidth: 2,
+                                borderDash: [6, 6],
+                                label: {
+                                    content: 'Hedef: ' + goal + ' kcal',
+                                    enabled: true,
+                                    position: 'end',
+                                    backgroundColor: 'rgba(255, 99, 132, 0.8)'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
+</body>
+</html>
